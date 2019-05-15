@@ -1,0 +1,20 @@
+build:
+        docker build -t curso_gocd_ep6_2019 .
+[root@node-master otro]# cat Dockerfile
+FROM centos:latest
+MAINTAINER The CentOS Project <cloud-ops@centos.org>
+LABEL Vendor="CentOS" \
+      License=GPLv2 \
+      Version=2.4.6-40
+
+
+RUN yum -y --setopt=tsflags=nodocs update && \
+    yum -y --setopt=tsflags=nodocs install httpd && \
+    yum clean all
+
+EXPOSE 80
+
+ADD index.html /var/www/html/index.html
+# Simple startup script to avoid some issues observed with container restart
+
+CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
