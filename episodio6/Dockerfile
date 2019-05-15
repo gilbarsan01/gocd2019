@@ -1,6 +1,3 @@
-build:
-        docker build -t curso_gocd_ep6_2019 .
-[root@node-master otro]# cat Dockerfile
 FROM centos:latest
 MAINTAINER The CentOS Project <cloud-ops@centos.org>
 LABEL Vendor="CentOS" \
