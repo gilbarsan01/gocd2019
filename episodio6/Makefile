@@ -21,5 +21,7 @@ push:
 
 
 test:
-	@echo $(USERNAME_DOCKER)
-	@echo $(NAME_CONTAINER)
+	docker run -d -p 8080:80 --rm --name $(NAME_CONTAINER) $(NAME_CONTAINER):latest
+	sleep 2
+	curl localhost 8080
+	docker rm -f $(NAME_CONTAINER)
